@@ -1,2 +1,2 @@
-import flet as 
+import flet as ft
 
