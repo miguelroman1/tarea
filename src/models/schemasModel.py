@@ -8,7 +8,7 @@ class UsuarioSchema(BaseModel):
     password: str = Field(..., min_length=8)
     
 class TareaSchema(BaseModel):
-    titulo: str = Field(..., min_length=1, max_length=100)
+    titulo: str = Field(..., min_length=1, max_length=200)
     descripcion: Optional[str] = None
     prioridad: str = "media"
     clasificaion: str = "personal"
