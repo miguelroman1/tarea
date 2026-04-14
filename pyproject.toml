@@ -11,3 +11,14 @@ dependencies = [
     "mysql-connector-python>=9.6.0",
     "pydantic[email]>=2.12.5",
 ]
+
+
+
+[project.scripts]
+app = "main:main"
+
+[tool.uv]
+package = true
+
+[tool.setuptools.package-dir]
+"" = "src"

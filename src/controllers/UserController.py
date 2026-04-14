@@ -4,7 +4,7 @@ from pydantic import ValidationError
 
 class AuthController:
     def __init__(self):
-        self.usuario_model = UsuarioModel()
+        self.UsuarioModel = UsuarioModel()
 
     def register_user(self, nombre, email, password):
         try:
