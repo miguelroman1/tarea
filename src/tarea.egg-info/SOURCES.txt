@@ -13,4 +13,6 @@ src/tarea.egg-info/dependency_links.txt
 src/tarea.egg-info/entry_points.txt
 src/tarea.egg-info/requires.txt
 src/tarea.egg-info/top_level.txt
+src/views/LoginView.py
+src/views/dashboard.py
 src/views/loginView.py

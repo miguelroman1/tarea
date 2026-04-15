@@ -10,6 +10,7 @@ dependencies = [
     "flet>=0.82.2",
     "mysql-connector-python>=9.6.0",
     "pydantic[email]>=2.12.5",
+    "python-dotenv>=1.2.2",
 ]
 
 
