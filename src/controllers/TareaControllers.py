@@ -1,6 +1,4 @@
-from src.models.TareaModel import TareaModel             
-from src.models.schemasModel import TareaSchema
-from pydantic import ValidationError
+from models.TareasModel import TareaModel             
 
 class TareaController:
     def __init__(self):

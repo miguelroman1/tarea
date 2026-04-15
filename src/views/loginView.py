@@ -1,11 +1,11 @@
 import flet as ft
 
-def LoginView(page: ft.Page):
+def LoginView(page: ft.Page, auth_controller):
     email_input = ft.TextField(label="Email", width=350, border_radius=10)
-    pass_inpot = ft.TextField(label="Password", width=350, border_radius=10, password=True, can_reveal_password=True)
+    pass_input = ft.TextField(label="Password", width=350, border_radius=10, password=True, can_reveal_password=True)
     
     def login_click(e):
-        user, msg = auth_controller.login(email_input.value, pass_inpot.value)
+        user, msg = auth_controller.login(email_input.value, pass_input.value)
         if user:
             page.session.set("user", user)
             page.go("/dashboard")
@@ -23,5 +23,5 @@ def LoginView(page: ft.Page):
             pass_input,
             ft.ElevatedButton("Entrar", on_click=login_click, width=350),
             ft.TextButton("Crear una cuenta nueva",on_click=lambda _: page.go("/registro"))
-        ], horizontal
+        ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, align_items=ft.MainAxisAlignment.CENTER
     ])
