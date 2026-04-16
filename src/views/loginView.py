@@ -14,9 +14,9 @@ def LoginView(page: ft.Page, auth_controller):
             page.snack_bar.open = True
             page.update()
             
-    return ft.view("/",[
+    return ft.view("/login",[
         ft.AppBar(title=ft.Text("SIGE - login"),bgcolor=ft.colors.BLUE_GREY_900, color="white"),
-        ft.column[
+        ft.column([
             ft.Icon(ft.Icons.LOCK_PERSON, size=50, color=ft.Colors.BLUE),
             ft.Text("Acceso al Sistema",size=24, weight="bold"),
             email_input,
@@ -24,4 +24,5 @@ def LoginView(page: ft.Page, auth_controller):
             ft.ElevatedButton("Entrar", on_click=login_click, width=350),
             ft.TextButton("Crear una cuenta nueva",on_click=lambda _: page.go("/registro"))
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, align_items=ft.MainAxisAlignment.CENTER
+        )
     ])
