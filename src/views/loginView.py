@@ -1,9 +1,9 @@
 import flet as ft
 
 def LoginView(page: ft.Page, auth_controller):
-    # Campos de entrada
     email_input = ft.TextField(
         label="Correo electrónico",
+        prefix_icon=ft.Icons.PERSON,
         width=350,
         border_radius=10,
         keyboard_type=ft.KeyboardType.EMAIL
@@ -11,6 +11,7 @@ def LoginView(page: ft.Page, auth_controller):
     
     pass_input = ft.TextField(
         label="Contraseña",
+        prefix_icon=ft.Icons.KEY,
         password=True,
         can_reveal_password=True,
         width=350,
@@ -18,14 +19,12 @@ def LoginView(page: ft.Page, auth_controller):
     )
 
     def login_click(e):
-        # Validación de campos vacíos
         if not email_input.value or not pass_input.value:
             page.snack_bar = ft.SnackBar(ft.Text("Por favor, llene todos los campos"))
             page.snack_bar.open = True
             page.update()
             return
 
-        # Llamada al controlador
         user, msg = auth_controller.login(email_input.value, pass_input.value)
 
         if user:
@@ -36,7 +35,6 @@ def LoginView(page: ft.Page, auth_controller):
             page.snack_bar.open = True
             page.update()
 
-    # Botón de entrada
     login_button = ft.ElevatedButton(
         "Entrar",
         on_click=login_click,
@@ -45,8 +43,9 @@ def LoginView(page: ft.Page, auth_controller):
         color="white"
     )
 
-    # Permitir entrar al presionar "Enter" en la contraseña
     pass_input.on_submit = login_click
+    
+    
 
     return ft.View(
         route="/",
@@ -68,6 +67,7 @@ def LoginView(page: ft.Page, auth_controller):
                         "Crear una cuenta nueva",
                         on_click=lambda _: page.go("/registro")
                     )
+                    
                 ],
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 tight=True,
