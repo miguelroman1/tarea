@@ -5,17 +5,14 @@ from views.loginView import LoginView
 from views.dashboard import DashboardView
 
 def start(page: ft.Page):
-    # Configuración inicial de la página
     page.title = "Sistema SIGE"
     page.window_width = 450
     page.window_height = 700
 
-    # Inicializamos controladores
     auth_ctrl = AuthController()
     task_ctrl = TareaController()
 
     def route_change(e):
-        # Limpiamos las vistas actuales para evitar duplicados
         page.views.clear()
         
         # Caso 1: Login
