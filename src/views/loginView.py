@@ -1,12 +1,14 @@
 import flet as ft
 
 def LoginView(page: ft.Page, auth_controller):
+    
     email_input = ft.TextField(
         label="Correo electrónico",
         prefix_icon=ft.Icons.PERSON,
         width=350,
         border_radius=10,
-        keyboard_type=ft.KeyboardType.EMAIL
+        keyboard_type=ft.KeyboardType.EMAIL,
+        border_color="lightBlueAccent"
     )
     
     pass_input = ft.TextField(
@@ -15,9 +17,9 @@ def LoginView(page: ft.Page, auth_controller):
         password=True,
         can_reveal_password=True,
         width=350,
-        border_radius=10
+        border_radius=10,
+        border_color="lightBlueAccent"
     )
-
     def login_click(e):
         if not email_input.value or not pass_input.value:
             page.snack_bar = ft.SnackBar(ft.Text("Por favor, llene todos los campos"))
@@ -53,7 +55,7 @@ def LoginView(page: ft.Page, auth_controller):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         appbar=ft.AppBar(
             title=ft.Text("SIGE - Login"),
-            bgcolor="bluegrey900",
+            bgcolor="lightBlueAccent",
             color="white"
         ),
         controls=[

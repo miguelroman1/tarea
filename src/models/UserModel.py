@@ -1,5 +1,5 @@
 import bcrypt
-from .databaseModel import Database
+from models.databaseModel import Database
 
 class UsuarioModel:
     def __init__(self):
@@ -23,7 +23,7 @@ class UsuarioModel:
             return False
         finally:
             conn.close()
-            
+
     def validar_login(self, email, password):
         conn = self.db.get_connection()
         cursor = conn.cursor(dictionary=True)

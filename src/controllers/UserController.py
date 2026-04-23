@@ -15,9 +15,12 @@ class AuthController:
             return False, e.errors()[0]['msg']
         
     def login(self, email, password):
-        usuario = self.UsuarioModel.validar_login(email, password)
+        try:
+            print("validalndo login...")
+            usuario_login = UsuarioSchema.validar_login(email, password)
+            success = self.UsuarioModel.validar_login(usuario_login)
 
-        if usuario:
-            return usuario, "Login exitoso"
-        else:
-            return None, "Correo o contraseña incorrectos"
+            if usuario_login:
+                return usuario_login, "Login exitoso"
+        except Exception as e:
+            return None, str(e)
