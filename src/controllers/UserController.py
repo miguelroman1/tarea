@@ -16,11 +16,12 @@ class AuthController:
         
     def login(self, email, password):
         try:
-            print("validalndo login...")
-            usuario_login = UsuarioSchema.validar_login(email, password)
-            success = self.UsuarioModel.validar_login(usuario_login)
-
+            usuario_login = UsuarioLogin(email=email, password=password)
             if usuario_login:
-                return usuario_login, "Login exitoso"
+                success = self.UsuarioModel.validar_login(usuario_login)
+                if success:
+                    return True, "Login exitoso"
+                else:
+                    return False, "Credenciales incorrectas"
         except Exception as e:
             return None, str(e)
