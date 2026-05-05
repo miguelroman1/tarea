@@ -38,14 +38,29 @@ def LoginView(page: ft.Page, auth_controller):
             page.update()
 
     login_button = ft.ElevatedButton(
-        "Entrar",
+        "Iniciar sesión",
+        width=250,
         on_click=login_click,
-        width=350,
-        bgcolor="blue",
-        color="white"
+        style=ft.ButtonStyle(
+            bgcolor=ft.Colors.GREEN_400,
+            color=ft.Colors.WHITE,
+            padding=20,
+            shape=ft.RoundedRectangleBorder(radius=12),
+        ),
     )
-
     pass_input.on_submit = login_click
+    
+    registro = ft.ElevatedButton(
+        "Registrarme",
+        width=200,
+        on_click=lambda _: page.go("/registro"),
+        style=ft.ButtonStyle(
+            bgcolor=ft.Colors.BLUE_600,
+            color=ft.Colors.WHITE,
+            padding=20,
+            shape=ft.RoundedRectangleBorder(radius=12),
+        ),
+    )
     
     
 

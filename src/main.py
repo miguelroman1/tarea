@@ -18,6 +18,9 @@ def start(page: ft.Page):
         # Caso 1: Login
         if page.route == "/":
             page.views.append(LoginView(page, auth_ctrl))
+            
+        elif page.route == "/registro":
+            page.views.append(RegistroView(page, auth_ctrl))
         
         # Caso 2: Dashboard
         elif page.route == "/dashboard":
