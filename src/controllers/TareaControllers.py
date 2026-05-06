@@ -7,10 +7,9 @@ class TareaController:
     def obtener_lista(self, id_usuario):
         return self.model.listar_por_usuario(id_usuario)
     
-    def guardar_nueva_tarea(self, id_usuario, titulo, des, clas):
+    def guardar_nueva(self, id_usuario, titulo, descripcion, prioridad, clasificacion):
         if not titulo:
             return False, "El título es obligatorio"
         
-        self.model.crear(id_usuario, titulo, des, clas)
+        self.model.crear(id_usuario, titulo, descripcion, prioridad, clasificacion)
         return True, "Tarea creada exitosamente"
-    

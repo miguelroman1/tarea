@@ -6,8 +6,8 @@ def DashboardView(page, tarea_controller):
 
     def refresh():
         lista_tareas.controls.clear()
-        # Obtenemos las tareas desde el controlador usando el ID del usuario en sesión
-        for t in tarea_controller.obtener_lista(user['id_usuario']):
+        user_id = user.get('id_usuario') or user.get('id')
+        for t in tarea_controller.obtener_lista(user_id):
             lista_tareas.controls.append(
                 ft.Card(
                     content=ft.Container(

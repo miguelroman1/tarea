@@ -5,22 +5,22 @@ class UsuarioModel:
     def __init__(self):
         self.db = Database()
         
-    def registrar(self, usuario_data):
+    def registrar(self, nombre, apellido, email, password):
         salt = bcrypt.gensalt()
-        hashed_password = bcrypt.hashpw(usuario_data.password.encode('utf-8'), salt)
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
         
         conn = self.db.get_connection()
         cursor = conn.cursor()
         try:
             cursor.execute(
-                "INSERT INTO usuario (nombre, email, password) VALUES (%s, %s, %s)",
-                (usuario_data.nombre, usuario_data.email, hashed_password.decode('utf-8'))
+                "INSERT INTO usuario (nombre, apellido, email, password) VALUES (%s, %s, %s, %s)",
+                (nombre, apellido, email, hashed_password.decode('utf-8'))
             )
             conn.commit()
-            return True
+            return True, "Usuario registrado exitosamente"
         except Exception as e:
             print(f"Error: {e}")
-            return False
+            return False, str(e)
         finally:
             conn.close()
 
@@ -31,6 +31,6 @@ class UsuarioModel:
         usuario = cursor.fetchone()
         conn.close()
         
-        if usuario and bcrypt.checkpw(password.encode('utf-8'), usuario['pasword'].encode('utf-8')):
+        if usuario and bcrypt.checkpw(password.encode('utf-8'), usuario['password'].encode('utf-8')):
             return usuario
         return None

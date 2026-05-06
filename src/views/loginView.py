@@ -30,7 +30,7 @@ def LoginView(page: ft.Page, auth_controller):
         user, msg = auth_controller.login(email_input.value, pass_input.value)
 
         if user:
-            page.session.set("user", user)
+            page.client_storage.set("user", user)
             page.go("/dashboard")
         else:
             page.snack_bar = ft.SnackBar(ft.Text(msg))

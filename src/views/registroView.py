@@ -1,7 +1,8 @@
 import flet as ft
 
 def RegistroView(page: ft.Page, auth_controller):
-    nombre = ft.TextField(label="Nombre Completo", prefix_icon=ft.Icons.PERSON, width=350)
+    nombre = ft.TextField(label="Nombre", prefix_icon=ft.Icons.PERSON, width=350)
+    apellido = ft.TextField(label="Apellido", prefix_icon=ft.Icons.PERSON_OUTLINE, width=350)  # ← NUEVO
     correo = ft.TextField(label="Correo electrónico", prefix_icon=ft.Icons.EMAIL, width=350)
     password = ft.TextField(
         label="Contraseña", 
@@ -14,13 +15,13 @@ def RegistroView(page: ft.Page, auth_controller):
     mensaje = ft.Text("", weight="bold")
 
     def registrar_click(e):
-        if not nombre.value or not correo.value or not password.value:
+        if not nombre.value or not apellido.value or not correo.value or not password.value:  # ← Verificar apellido
             mensaje.value = "Todos los campos son obligatorios"
             mensaje.color = "red"
             page.update()
             return
 
-        success, msg = auth_controller.register_user(nombre.value, correo.value, password.value)
+        success, msg = auth_controller.register_user(nombre.value, apellido.value, correo.value, password.value)  # ← Enviar apellido
         if success:
             page.snack_bar = ft.SnackBar(ft.Text(msg), bgcolor="green")
             page.snack_bar.open = True
@@ -30,12 +31,12 @@ def RegistroView(page: ft.Page, auth_controller):
             mensaje.color = "red"
             page.update()
 
-   
     content = ft.Column(
         [
             ft.Icon(ft.Icons.PERSON_ADD_ROUNDED, size=50, color=ft.Colors.BLUE_600),
             ft.Text("Registro de Usuario", size=24, weight="bold"),
             nombre,
+            apellido,  # ← Agregar campo
             correo,
             password,
             mensaje,
