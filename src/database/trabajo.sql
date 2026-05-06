@@ -14,12 +14,9 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Volcando estructura de base de datos para tareas
 CREATE DATABASE IF NOT EXISTS `tareas` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `tareas`;
 
--- Volcando estructura para tabla tareas.tareas
 CREATE TABLE IF NOT EXISTS `tareas` (
   `id_tarea` int NOT NULL AUTO_INCREMENT,
   `id_usuario` int NOT NULL,
@@ -39,12 +36,10 @@ CREATE TABLE IF NOT EXISTS `tareas` (
   KEY `idx_clasificacion` (`clasificacion`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla tareas.tareas: 0 rows
 DELETE FROM `tareas`;
 /*!40000 ALTER TABLE `tareas` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tareas` ENABLE KEYS */;
 
--- Volcando estructura para tabla tareas.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
   `id_usuario` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -60,7 +55,6 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla tareas.usuario: 0 rows
 DELETE FROM `usuario`;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;

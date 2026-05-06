@@ -20,7 +20,7 @@ def RegistroView(page: ft.Page, auth_controller):
             page.update()
             return
 
-        success, msg = auth_controller.registrar_usuario(nombre.value, correo.value, password.value)
+        success, msg = auth_controller.register_user(nombre.value, correo.value, password.value)
         if success:
             page.snack_bar = ft.SnackBar(ft.Text(msg), bgcolor="green")
             page.snack_bar.open = True

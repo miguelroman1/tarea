@@ -16,3 +16,4 @@ src/tarea.egg-info/top_level.txt
 src/views/LoginView.py
 src/views/dashboard.py
 src/views/loginView.py
+src/views/registroView.py
