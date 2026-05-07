@@ -59,7 +59,7 @@ def RegistroView(page: ft.Page, auth_controller):
         controls=[
             ft.AppBar(
                 title=ft.Text("Crear Cuenta"), 
-                bgcolor=ft.Colors.BLACK, 
+                bgcolor=ft.Colors.BLUE_600, 
                 color=ft.Colors.WHITE
             ),
             ft.Container(

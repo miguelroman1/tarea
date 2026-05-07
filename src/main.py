@@ -2,7 +2,7 @@ import flet as ft
 from controllers.UserController import AuthController
 from controllers.TareaControllers import TareaController
 from views.loginView import LoginView
-from views.dashboard import DashboardView
+from views.dashboardView import DashboardView
 from views.registroView import RegistroView  
 from models.databaseModel import Database
 
@@ -17,14 +17,12 @@ def start(page: ft.Page):
     def route_change(e):
         page.views.clear()
         
-        # Caso 1: Login
         if page.route == "/":
             page.views.append(LoginView(page, auth_ctrl))
             
         elif page.route == "/registro":
             page.views.append(RegistroView(page, auth_ctrl))
         
-        # Caso 2: Dashboard
         elif page.route == "/dashboard":
             page.views.append(DashboardView(page, task_ctrl))
 
